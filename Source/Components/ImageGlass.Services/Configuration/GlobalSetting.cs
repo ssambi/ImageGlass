@@ -29,6 +29,7 @@ using System.IO;
 using System.Text;
 using ImageGlass.Library.FileAssociations;
 using System.Linq;
+using System.Globalization;
 
 namespace ImageGlass.Services.Configuration
 {
@@ -36,11 +37,12 @@ namespace ImageGlass.Services.Configuration
     {
         // Private settings --------------------------------------------------------------
         private static ImgMan _imageList = new ImgMan();
-        private static List<String> _imageFilenameList = new List<string>();
+        //private static List<String> _imageFilenameList = new List<string>();
         private static string _facebookAccessToken = "";
         private static bool _isForcedActive = true;
         private static int _currentIndex = -1;
         private static bool _isRecursiveLoading = false;
+        private static bool _isShowingHiddenImages = false;
         private static StringCollection _stringClipboard = new StringCollection();
         private static string _tempDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"ImageGlass\Temp");
         private static Library.Language _langPack = new Library.Language();
@@ -85,7 +87,8 @@ namespace ImageGlass.Services.Configuration
         private static bool _isScrollbarsVisible = false;
         private static List<ImageEditingAssociation> _imageEditingAssociationList = new List<ImageEditingAssociation>();
 
-
+        private static NumberFormatInfo numFormat = new NumberFormatInfo();
+        
 
 
         #region "Properties"
@@ -102,11 +105,11 @@ namespace ImageGlass.Services.Configuration
         /// <summary>
         /// Gets, sets filename list
         /// </summary>
-        public static List<String> ImageFilenameList
-        {
-            get { return GlobalSetting._imageFilenameList; }
-            set { GlobalSetting._imageFilenameList = value; }
-        }
+        //public static List<String> ImageFilenameList
+        //{
+        //    get { return GlobalSetting._imageFilenameList; }
+        //    set { GlobalSetting._imageFilenameList = value; }
+        //}
 
         /// <summary>
         /// Gets, sets Access token of Facebook
@@ -142,6 +145,15 @@ namespace ImageGlass.Services.Configuration
         {
             get { return GlobalSetting._isRecursiveLoading; }
             set { GlobalSetting._isRecursiveLoading = value; }
+        }
+
+        /// <summary>
+        /// Gets, sets showing/loading hidden images
+        /// </summary>
+        public static bool IsShowingHiddenImages
+        {
+            get => _isShowingHiddenImages;
+            set => _isShowingHiddenImages = value;
         }
 
         /// <summary>
@@ -546,7 +558,20 @@ namespace ImageGlass.Services.Configuration
         /// </summary>
         public static bool IsScrollbarsVisible { get => _isScrollbarsVisible; set => _isScrollbarsVisible = value; }
 
-        
+        /// <summary>
+        /// Default number format for ImageGlass
+        /// </summary>
+        public static NumberFormatInfo NumberFormat {
+            get
+            {
+                var newFormat = new NumberFormatInfo();
+                newFormat.NegativeSign = "-";
+                return newFormat;
+            }
+            set => numFormat = value;
+        }
+
+
 
 
 

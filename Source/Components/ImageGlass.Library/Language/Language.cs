@@ -230,6 +230,7 @@ namespace ImageGlass.Library
 
             #region frmMain
             Items.Add("frmMain.picMain._ErrorText", "ImageGlass cannot open this picture because the file appears to be damaged, corrupted or not supported.");//v2.0 beta, updated 4.0
+            Items.Add("frmMain._ImageNotExist", "The viewing image doesn't exist.");//4.5
 
 
             #region Tool bar
@@ -420,7 +421,9 @@ namespace ImageGlass.Library
 
             #region Portable mode
             Items.Add("frmSetting.lblHeadPortableMode", "Portable mode"); //v4.0
-            Items.Add("frmSetting.chkPortableMode", "Enable Portable mode"); //v4.0
+            //Items.Add("frmSetting.chkPortableMode", "Enable Portable mode"); //remove v4.0
+            Items.Add("frmSetting.chkPortableMode._Enabled", "Portable mode is enable"); //v4.5
+            Items.Add("frmSetting.chkPortableMode._Disabled", "Portable mode is disabled on the installed folder:\r\n{0}"); //v4.5
             #endregion
 
 
@@ -441,6 +444,7 @@ namespace ImageGlass.Library
             #region Image loading
             Items.Add("frmSetting.lblHeadImageLoading", "Image loading"); //v4.0
             Items.Add("frmSetting.chkFindChildFolder", "Find images in child folder");
+            Items.Add("frmSetting.chkShowHiddenImages", "Show hidden images"); //v4.5
             Items.Add("frmSetting.chkLoopViewer", "Loop back viewer to the first image when reaching the end of the list"); //v4.0
             Items.Add("frmSetting.chkImageBoosterBack", "Turn on Image Booster when navigate back (need more ~20% RAM)"); //v2.0 final
             Items.Add("frmSetting.lblImageLoadingOrder", "Image loading order");
